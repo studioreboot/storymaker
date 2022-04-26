@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Story Maker</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <script src="src/morphic.js"></script>
+        <script src="src/symbols.js"></script>
+        <script src="src/widgets.js"></script>
+        <script src="src/date.js"></script>
+        <script src="src/gui.js"></script>
+        <script src="src/cloud.js"></script>
+		<script src="src/sha512.js"></script>
+        <script src="src/FileSaver.js"></script>
+        <script>
+            var world, ide;
+            window.onload = function () {
+                world = new WorldMorph(document.getElementById("world"));
+                //world.isDevMode = true;
+                window.onbeforeunload = null;
+                ide = new IDE_Morph();
+                ide.openIn(world);
+                setInterval(() => {
+                    world.doOneCycle();
+                }, 1);
+            }
+        </script>
+    </head>
+    <body style="margin: 0;">
+        <canvas id="world"></canvas>
+    </body>
+</html>
